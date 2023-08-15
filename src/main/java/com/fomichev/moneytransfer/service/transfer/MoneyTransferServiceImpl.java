@@ -16,6 +16,9 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Money transfer service
+ */
 @Slf4j
 @Service
 public class MoneyTransferServiceImpl implements MoneyTransferService {
@@ -31,6 +34,10 @@ public class MoneyTransferServiceImpl implements MoneyTransferService {
         this.accountValidationService = accountValidationService;
     }
 
+    /**
+     * Transfer between accounts in single request
+     * @param requestTransfer - request to transfer
+     */
     @Override
     @Transactional
     public void transfer(RequestTransfer requestTransfer) throws AccountValidationException {
@@ -62,6 +69,10 @@ public class MoneyTransferServiceImpl implements MoneyTransferService {
         }
     }
 
+    /**
+     * Transfer between account in list
+     * @param transferList - list of accounts
+     */
     @Override
     public void transfer(Map<Long, AccountTo<Long, Double>> transferList) throws AccountValidationException {
         try {
@@ -100,10 +111,16 @@ public class MoneyTransferServiceImpl implements MoneyTransferService {
         }
     }
 
+    /**
+     * Add money to account operation
+     */
     private void addMoney(Account account, Double sum) {
         account.setBalance(account.getBalance().add(BigDecimal.valueOf(sum)));
     }
 
+    /**
+     * Subtract money from account operation
+     */
     private void subtractMoney(Account account, Double sum) {
         account.setBalance(account.getBalance().subtract(BigDecimal.valueOf(sum)));
     }

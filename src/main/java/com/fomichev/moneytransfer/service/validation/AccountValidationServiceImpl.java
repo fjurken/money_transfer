@@ -10,9 +10,17 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+/**
+ * Account validation service
+ */
 @Service
 public class AccountValidationServiceImpl implements AccountValidationService {
 
+    /**
+     * Validate account FROM
+     * @param account - Account to validate
+     * @param requiredSum - sum (required amount)
+     */
     @Override
     public void validateAccountFrom(Account account, Double requiredSum) throws AccountValidationException {
         try {
@@ -23,6 +31,10 @@ public class AccountValidationServiceImpl implements AccountValidationService {
         }
     }
 
+    /**
+     * Validate account TO
+     * @param account - Account to validate
+     */
     @Override
     public void validateAccountTo(Account account) throws AccountValidationException {
         try {
@@ -32,6 +44,10 @@ public class AccountValidationServiceImpl implements AccountValidationService {
         }
     }
 
+    /**
+     * Validate Account is active by its status
+     * @param account - Account to validate
+     */
     @Override
     public void isAccountActive(Account account) throws AccountStatusException {
         if (account.getStatus() != EntityStatus.ACTIVE) {
@@ -39,6 +55,11 @@ public class AccountValidationServiceImpl implements AccountValidationService {
         }
     }
 
+    /**
+     * Validate Account to contains enough money
+     * @param account - Account to validate
+     * @param requiredSum - sum (required amount)
+     */
     @Override
     public void isAccountHasEnoughMoney(Account account, Double requiredSum) throws AccountHasNoEnoughMoneyException {
         if (account.getBalance().compareTo(BigDecimal.valueOf(requiredSum)) < 0) {

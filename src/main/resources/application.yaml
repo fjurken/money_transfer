@@ -15,9 +15,11 @@ management:
       exposure:
         include: "*"
 
-
+# set accounts to transfer money from formatted as {"accountId": "sum",...}
 accountsFrom:
   '{"1000000001": "5000", "1000000002": "200", "1000000003": "1000"}'
 
+# set accounts to receive money formatted as enumeration
 accountsTo:
-  1000000004,1000000005,1000000006
+#  1000000004,1000000005,1000000006
+  '{"1000000004", "1000000005", "1000000006"}'

@@ -4,19 +4,26 @@ import com.fomichev.moneytransfer.controller.dto.request.RequestTransfer;
 import com.fomichev.moneytransfer.exception.AccountValidationException;
 import com.fomichev.moneytransfer.service.transfer.MoneyTransferService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+/**
+ * Money transfer controller
+ */
 
 @RestController
 @RequestMapping("/")
 public class TransferController {
 
-    private MoneyTransferService moneyTransferService;
+    private final MoneyTransferService moneyTransferService;
 
+    @Autowired
     public TransferController(MoneyTransferService moneyTransferService) {
         this.moneyTransferService = moneyTransferService;
     }
+
 
     @PostMapping("transfer")
     public ResponseEntity transfer(
