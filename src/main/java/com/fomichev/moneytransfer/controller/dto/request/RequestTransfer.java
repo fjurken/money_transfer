@@ -3,6 +3,7 @@ package com.fomichev.moneytransfer.controller.dto.request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -22,6 +23,7 @@ public class RequestTransfer implements Serializable {
 
     @JsonProperty("sum")
     @NotNull
+    @Positive
     Double sum;
 
 }
