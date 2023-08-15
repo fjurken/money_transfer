@@ -21,5 +21,4 @@ accountsFrom:
 
 # set accounts to receive money formatted as enumeration
 accountsTo:
-#  1000000004,1000000005,1000000006
   '{"1000000004", "1000000005", "1000000006"}'
