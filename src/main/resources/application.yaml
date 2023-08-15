@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:8889/transfer?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=true
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    database: MYSQL
+  liquibase:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+accountsFrom:
+  '{"1000000001": "5000", "1000000002": "200", "1000000003": "1000"}'
+
+accountsTo:
+  1000000004,1000000005,1000000006
